@@ -111,13 +111,13 @@ class _HomePageState extends State<HomePage> {
             // ),
         ),
         actions: [
-          IconButton(
-            icon: Icon(Icons.favorite,color: Colors.red, size: 25.0),
-            onPressed: _toggleTextVisibility, // 버튼을 눌렀을 때 텍스트 입력 창 보여주기
-          ),
+          // IconButton(
+          //   icon: Icon(Icons.favorite,color: Colors.red, size: 25.0),
+          //   onPressed: _toggleTextVisibility, // 버튼을 눌렀을 때 텍스트 입력 창 보여주기
+          // ),
            // SizedBox(width:0), // 간격 조정 (0으로 설정하면 간격이 없게됨)
           TextButton(
-            child: Text('Donate', style: TextStyle(fontSize: 20.0,color: Colors.red)),
+            child: Text('♥공지&후원', style: TextStyle(fontSize: 20.0,color: Colors.red)),
             onPressed: _toggleTextVisibility, // 버튼 클릭 시 텍스트 토글
           ),
         ],
