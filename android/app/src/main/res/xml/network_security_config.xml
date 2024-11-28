@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
+<!--    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            &lt;!&ndash; 시스템 인증서 &ndash;&gt;
+            <certificates src="system" />
+            &lt;!&ndash; 로컬 인증서 &ndash;&gt;
+           &lt;!&ndash; <certificates src="@raw/your_certificate" />&ndash;&gt;
+        </trust-anchors>
+    </base-config>-->
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">aws.bluelegend.net</domain>
+        <domain includeSubdomains="true">www.bluelegend.net</domain>
     </domain-config>
+<!--    <domain-config cleartextTrafficPermitted="true">-->
+<!--        <domain includeSubdomains="true">10.0.2.2</domain>-->
+<!--    </domain-config>-->
+<!--    <domain-config cleartextTrafficPermitted="true">-->
+<!--        <domain includeSubdomains="true">192.168.219.119</domain>-->
+<!--    </domain-config>-->
+<!--    <domain-config cleartextTrafficPermitted="true">-->
+<!--        <domain includeSubdomains="true">dapi.kakao.com</domain>-->
+<!--    </domain-config>-->
 </network-security-config>

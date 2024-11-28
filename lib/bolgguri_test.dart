@@ -1,18 +1,16 @@
 //copilot
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class Bolgguri extends StatefulWidget {
-  const Bolgguri({super.key});
+class BolgguriTest extends StatefulWidget {
+  const BolgguriTest({super.key});
 
   @override
-  State<Bolgguri> createState() => _BolgguriState();
+  State<BolgguriTest> createState() => _BolgguriTestState();
 }
 
-class _BolgguriState extends State<Bolgguri> {
+class _BolgguriTestState extends State<BolgguriTest> {
   InAppWebViewController? _webViewController;
   final InAppWebViewSettings settings = InAppWebViewSettings(
     javaScriptEnabled: true,
@@ -48,7 +46,7 @@ class _BolgguriState extends State<Bolgguri> {
         children: [
           Expanded(
             child: InAppWebView(
-              // initialUrlRequest: URLRequest(url: WebUri('https://aws.bluelegend.net/nearBolgguriApp')),
+              // initialUrlRequest: URLRequest(url: WebUri('https://192.168.219.119:8443/nearBolgguriApp')),
               initialUrlRequest: URLRequest(url: WebUri('https://www.bluelegend.net/nearBolgguriApp')),
               initialSettings: settings,
               onWebViewCreated: (controller) {
@@ -85,6 +83,7 @@ class _BolgguriState extends State<Bolgguri> {
               //     SnackBar(content: Text(consoleMessage.message)),
               //   );
               // },
+
             ),
           ),
         ],
@@ -149,14 +148,14 @@ class NavigationControls extends StatelessWidget {
 // import 'package:flutter/material.dart';
 // import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 //
-// class Bolgguri extends StatefulWidget {
-//   const Bolgguri({super.key});
+// class BolgguriTest extends StatefulWidget {
+//   const BolgguriTest({super.key});
 //
 //   @override
-//   State<Bolgguri> createState() => _BolgguriState();
+//   State<BolgguriTest> createState() => _BolgguriTestState();
 // }
 //
-// class _BolgguriState extends State<Bolgguri> {
+// class _BolgguriTestState extends State<BolgguriTest> {
 //   late InAppWebViewController _webViewController;
 //
 //   @override
@@ -172,7 +171,7 @@ class NavigationControls extends StatelessWidget {
 //         children: [
 //           Expanded(
 //             child: InAppWebView(
-//               initialUrlRequest: URLRequest(url: WebUri('https://aws.bluelegend.net/nearBolgguri')),
+//               initialUrlRequest: URLRequest(url: WebUri('https://aws.bluelegend.net/nearBolgguriTest')),
 //               onWebViewCreated: (controller) {
 //                 _webViewController = controller;
 //               },
@@ -250,14 +249,14 @@ class NavigationControls extends StatelessWidget {
 // import 'package:webview_flutter/webview_flutter.dart';
 // import 'package:webview_flutter_android/webview_flutter_android.dart';
 //
-// class Bolgguri extends StatefulWidget {
-//   const Bolgguri({super.key});
+// class BolgguriTest extends StatefulWidget {
+//   const BolgguriTest({super.key});
 //
 //   @override
-//   State<Bolgguri> createState() => _BolgguriState();
+//   State<BolgguriTest> createState() => _BolgguriTestState();
 // }
 //
-// class _BolgguriState extends State<Bolgguri> {
+// class _BolgguriTestState extends State<BolgguriTest> {
 //   late final WebViewController _controller;
 //
 //   @override
@@ -296,7 +295,7 @@ class NavigationControls extends StatelessWidget {
 //         },
 //       ))
 //       ..clearCache()
-//       ..loadRequest(Uri.parse('https://aws.bluelegend.net/nearBolgguri'));
+//       ..loadRequest(Uri.parse('https://aws.bluelegend.net/nearBolgguriTest'));
 //
 //     _controller = controller;
 //   }

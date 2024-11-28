@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:permission_handler/permission_handler.dart';
-
-class Jalgguri extends StatefulWidget {
-  const Jalgguri({super.key});
+//copilot
+class LocalhostWebView extends StatefulWidget {
+  const LocalhostWebView({super.key});
 
   @override
-  State<Jalgguri> createState() => _JalgguriState();
+  State<LocalhostWebView> createState() => _LocalhostWebViewState();
 }
 
-class _JalgguriState extends State<Jalgguri> {
+class _LocalhostWebViewState extends State<LocalhostWebView> {
   InAppWebViewController? _webViewController;
   final InAppWebViewSettings settings = InAppWebViewSettings(
     javaScriptEnabled: true,
     clearCache: true,
-    mixedContentMode: MixedContentMode.MIXED_CONTENT_COMPATIBILITY_MODE,
-    // useOnGeolocationPermissionsShowPrompt: true,
+    mixedContentMode: MixedContentMode.MIXED_CONTENT_ALWAYS_ALLOW,
   );
 
   @override
@@ -35,7 +34,7 @@ class _JalgguriState extends State<Jalgguri> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Menu'),
+        title: const Text('Localhost copilot'),
         actions: <Widget>[
           _webViewController != null ? NavigationControls(webViewController: _webViewController!) : Container(),
         ],
@@ -44,9 +43,11 @@ class _JalgguriState extends State<Jalgguri> {
         children: [
           Expanded(
             child: InAppWebView(
-              initialUrlRequest: URLRequest(url: WebUri('https://www.bluelegend.net/nearJalgguriApp')),
+              initialUrlRequest: URLRequest(url: WebUri('https://www.bluelegend.net/nearBolgguriApp')),
               initialSettings: settings,
               onWebViewCreated: (controller) {
+                _webViewController = controller;
+                _webViewController?.clearSslPreferences();
                 setState(() {
                   _webViewController = controller;
                 });
@@ -59,14 +60,6 @@ class _JalgguriState extends State<Jalgguri> {
               onGeolocationPermissionsShowPrompt: (controller, origin) async {
                 return GeolocationPermissionShowPromptResponse(allow: true, origin:origin, retain: false);
               },
-              // onLoadStop: (controller, url) async {
-              //   await controller.evaluateJavascript(source: '''
-              //     var meta = document.createElement('meta');
-              //     meta.httpEquiv = "Content-Security-Policy";
-              //     meta.content = "upgrade-insecure-requests";
-              //     document.getElementsByTagName('head')[0].appendChild(meta);
-              //   ''');
-              // },
               // onLoadStop: (controller, url) async {
               //   await controller.evaluateJavascript(source: '''
               //     var meta = document.createElement('meta');

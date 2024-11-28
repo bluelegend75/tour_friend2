@@ -34,8 +34,8 @@ android {
         targetSdk = flutter.targetSdkVersion
 //        versionCode = flutter.versionCode
 //        versionName = flutter.versionName
-        versionCode = 1.2    // 앱의 버전 코드: 앱이 업데이트 될때마다 증가
-        versionName = "1.2" // 사용자에게 보여지는 버전 이름
+        versionCode = 5    // 앱의 버전 코드: 앱이 업데이트 될때마다 증가
+        versionName = "5" // 사용자에게 보여지는 버전 이름
     }
     signingConfigs {
         release {

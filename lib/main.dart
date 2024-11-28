@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import 'LocalhostTest.dart';
+import 'LocalhostWebView.dart';
 import 'bolgguri.dart';
+import 'bolgguri_test.dart';
 import 'mukgguri.dart';
 import 'jalgguri.dart';
 import 'KeywordBolgguri.dart';
@@ -32,7 +35,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool _isTextVisible = false; // 텍스트 가시성 상태 관리
-  String content = '공지사항 없음';
+  String content = '- 문의: bluelegend75@gmail.com';
 
   void _toggleTextVisibility() {
     setState(() {
@@ -169,15 +172,21 @@ class _HomePageState extends State<HomePage> {
               //   },
               //   child: Text('Go to Page Two'),
               // ),
+              // SizedBox(height: 10),
+              // buildButton('Localhost_copilot', 'assets/view_icon.png', 30, LocalhostWebView()),
+              // SizedBox(height: 10),
+              // buildButton('LocalhostTest_GPT', 'assets/view_icon.png', 30, LocalhostTest()),
+              // SizedBox(height: 10),
+              // buildButton('볼꺼리Test', 'assets/view_icon.png', 30, BolgguriTest()),
               SizedBox(height: 10),
               buildButton('볼꺼리', 'assets/view_icon.png', 30, Bolgguri()),
-              SizedBox(height: 15),
+              SizedBox(height: 10),
               buildButton('먹꺼리', 'assets/food_icon.png', 30, Mukgguri()),
-              SizedBox(height: 15),
+              SizedBox(height: 10),
               buildButton('잘꺼리', 'assets/hotel_icon.png', 30, Jalgguri()),
-              SizedBox(height: 15),
+              SizedBox(height: 10),
               buildButton('경로 주변 탐색', 'assets/car_icon.png', 30, TripBolgguri()),
-              SizedBox(height: 15),
+              SizedBox(height: 10),
               buildButton('키워드 검색', null, 30, KeywordBolgguri(), useIcon: Icons.search),
             ],
           ),

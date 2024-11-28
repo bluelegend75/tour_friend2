@@ -2,29 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class Jalgguri extends StatefulWidget {
-  const Jalgguri({super.key});
+import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:permission_handler/permission_handler.dart';
+//gpt
+class LocalhostTest extends StatefulWidget {
+  const LocalhostTest({super.key});
 
   @override
-  State<Jalgguri> createState() => _JalgguriState();
+  State<LocalhostTest> createState() => _LocalhostTestState();
 }
 
-class _JalgguriState extends State<Jalgguri> {
+class _LocalhostTestState extends State<LocalhostTest> {
   InAppWebViewController? _webViewController;
   final InAppWebViewSettings settings = InAppWebViewSettings(
     javaScriptEnabled: true,
     clearCache: true,
-    mixedContentMode: MixedContentMode.MIXED_CONTENT_COMPATIBILITY_MODE,
-    // useOnGeolocationPermissionsShowPrompt: true,
+    mixedContentMode: MixedContentMode.MIXED_CONTENT_ALWAYS_ALLOW,
   );
 
   @override
   void initState() {
     super.initState();
-    _requestLocationPermission();
+    _requestPermissions();
   }
 
-  Future<void> _requestLocationPermission() async {
+  Future<void> _requestPermissions() async {
+    // Request location permission (if needed)
     var status = await Permission.location.status;
     if (!status.isGranted) {
       await Permission.location.request();
@@ -35,18 +39,24 @@ class _JalgguriState extends State<Jalgguri> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Menu'),
+        title: const Text('GPT Viewer'),
         actions: <Widget>[
-          _webViewController != null ? NavigationControls(webViewController: _webViewController!) : Container(),
+          _webViewController != null
+              ? NavigationControls(webViewController: _webViewController!)
+              : Container(),
         ],
       ),
       body: Column(
         children: [
           Expanded(
             child: InAppWebView(
-              initialUrlRequest: URLRequest(url: WebUri('https://www.bluelegend.net/nearJalgguriApp')),
+              initialUrlRequest: URLRequest(
+                url: WebUri('https://192.168.219.119/nearBolgguriApp'), // Use 10.0.2.2 for Android Emulator
+              ),
               initialSettings: settings,
               onWebViewCreated: (controller) {
+                _webViewController = controller;
+                _webViewController?.clearSslPreferences();
                 setState(() {
                   _webViewController = controller;
                 });
@@ -57,24 +67,18 @@ class _JalgguriState extends State<Jalgguri> {
                 );
               },
               onGeolocationPermissionsShowPrompt: (controller, origin) async {
-                return GeolocationPermissionShowPromptResponse(allow: true, origin:origin, retain: false);
+                return GeolocationPermissionShowPromptResponse(
+                  allow: true,
+                  origin: origin,
+                  retain: false,
+                );
               },
-              // onLoadStop: (controller, url) async {
-              //   await controller.evaluateJavascript(source: '''
-              //     var meta = document.createElement('meta');
-              //     meta.httpEquiv = "Content-Security-Policy";
-              //     meta.content = "upgrade-insecure-requests";
-              //     document.getElementsByTagName('head')[0].appendChild(meta);
-              //   ''');
-              // },
-              // onLoadStop: (controller, url) async {
-              //   await controller.evaluateJavascript(source: '''
-              //     var meta = document.createElement('meta');
-              //     meta.httpEquiv = "Content-Security-Policy";
-              //     meta.content = "script-src 'self' https://dapi.kakao.com;";
-              //     document.getElementsByTagName('head')[0].appendChild(meta);
-              //   ''');
-              // },
+              onLoadStop: (controller, url) async {
+                // Inject JavaScript (optional)
+                await controller.evaluateJavascript(source: '''
+                  console.log("Page loaded successfully.");
+                ''');
+              },
               // onConsoleMessage: (controller, consoleMessage) {
               //   ScaffoldMessenger.of(context).showSnackBar(
               //     SnackBar(content: Text(consoleMessage.message)),

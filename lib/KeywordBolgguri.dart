@@ -35,7 +35,7 @@ class _KeywordBolgguriState extends State<KeywordBolgguri> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('키워드 검색'),
+        title: const Text('Menu'),
         actions: <Widget>[
           _webViewController != null ? NavigationControls(webViewController: _webViewController!) : Container(),
         ],
@@ -44,7 +44,7 @@ class _KeywordBolgguriState extends State<KeywordBolgguri> {
         children: [
           Expanded(
             child: InAppWebView(
-              initialUrlRequest: URLRequest(url: WebUri('https://aws.bluelegend.net/nearKeywordApp')),
+              initialUrlRequest: URLRequest(url: WebUri('https://www.bluelegend.net/nearKeywordApp')),
               initialSettings: settings,
               onWebViewCreated: (controller) {
                 setState(() {
@@ -67,14 +67,14 @@ class _KeywordBolgguriState extends State<KeywordBolgguri> {
               //     document.getElementsByTagName('head')[0].appendChild(meta);
               //   ''');
               // },
-              onLoadStop: (controller, url) async {
-                await controller.evaluateJavascript(source: '''
-                  var meta = document.createElement('meta');
-                  meta.httpEquiv = "Content-Security-Policy";
-                  meta.content = "script-src 'self' https://dapi.kakao.com;";
-                  document.getElementsByTagName('head')[0].appendChild(meta);
-                ''');
-              },
+              // onLoadStop: (controller, url) async {
+              //   await controller.evaluateJavascript(source: '''
+              //     var meta = document.createElement('meta');
+              //     meta.httpEquiv = "Content-Security-Policy";
+              //     meta.content = "script-src 'self' https://dapi.kakao.com;";
+              //     document.getElementsByTagName('head')[0].appendChild(meta);
+              //   ''');
+              // },
               // onConsoleMessage: (controller, consoleMessage) {
               //   ScaffoldMessenger.of(context).showSnackBar(
               //     SnackBar(content: Text(consoleMessage.message)),

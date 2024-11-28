@@ -30,7 +30,7 @@ class _BolgguriState extends State<Bolgguri> {
           Expanded(
             child: InAppWebView(
               initialUrlRequest: URLRequest(
-                url: WebUri("https://aws.bluelegend.net/nearBolgguri"),
+                url: WebUri("https://www.bluelegend.net/nearBolgguri"),
               ),
               initialOptions: InAppWebViewGroupOptions(
                 crossPlatform: InAppWebViewOptions(
